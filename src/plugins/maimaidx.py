@@ -108,7 +108,7 @@ def song_txt(music: Music):
         {
             "type": "image",
             "data": {
-                "file": f"https://www.diving-fish.com/covers/{music.id}.jpg"
+                "file": f"https://www.diving-fish.com/covers/{get_cover_len4_id(music.id)}.png"
             }
         },
         {
@@ -304,7 +304,7 @@ async def _(bot: Bot, event: Event, state: T_State):
                 tag = stats['tag']
             except:
                 tag = "Insufficient Difficulty Data"
-            file = f"https://www.diving-fish.com/covers/{music['id']}.jpg"
+            file = f"https://www.diving-fish.com/covers/{get_cover_len4_id(music['id'])}.png"
             if len(chart['notes']) == 4:
                 msg = f'''------ {level_name[level_index]} ------
 Lv {level} ▸ {ds} | {tag}
@@ -359,7 +359,7 @@ Touch: {chart['notes'][3]} | Break: {chart['notes'][4]}'''
         name = groups[1]
         music = total_list.by_id(name)
         try:
-            file = f"https://www.diving-fish.com/covers/{music['id']}.jpg"
+            file =f"https://www.diving-fish.com/covers/{get_cover_len4_id(music['id'])}.png"
             await query_chart.send(Message([
                 {
                     "type": "text",
@@ -850,7 +850,7 @@ async def give_answer(bot: Bot, event: Event, state: T_State):
     guess: GuessObject = state["guess_object"]
     if guess.is_end:
         return
-    asyncio.create_task(bot.send(event, Message([MessageSegment.text("▿ 答案\n都没有猜到吗......那现在揭晓答案！\n♪ " + f"{guess.music['id']} > {guess.music['title']}\n"), MessageSegment.image(f"https://www.diving-fish.com/covers/{guess.music['id']}.jpg")])))
+    asyncio.create_task(bot.send(event, Message([MessageSegment.text("▿ 答案\n都没有猜到吗......那现在揭晓答案！\n♪ " + f"{guess.music['id']} > {guess.music['title']}\n"), MessageSegment.image(f"https://www.diving-fish.com/covers/{get_cover_len4_id(music['id'])}.png")])))
     del guess_dict[state["k"]]
 
 
@@ -914,7 +914,7 @@ async def _(bot: Bot, event: Event, state: T_State):
         await guess_music_solve.finish(Message([
             MessageSegment.reply(event.message_id),
             MessageSegment.text("▾ 答案\n您猜对了！答案就是：\n" + f"♪ {guess.music['id']} > {guess.music['title']}\n"),
-            MessageSegment.image(f"https://www.diving-fish.com/covers/{guess.music['id']}.jpg")
+            MessageSegment.image(f"https://www.diving-fish.com/covers/{get_cover_len4_id(music['id'])}.png")
         ]))
 
 waiting_set = on_command("设置店铺")
