@@ -851,7 +851,7 @@ async def give_answer(bot: Bot, event: Event, state: T_State):
     guess: GuessObject = state["guess_object"]
     if guess.is_end:
         return
-    asyncio.create_task(bot.send(event, Message([MessageSegment.text("▿ 答案\n都没有猜到吗......那现在揭晓答案！\n♪ " + f"{guess.music['id']} > {guess.music['title']}\n"), MessageSegment.image(f"https://www.diving-fish.com/covers/{get_cover_len4_id(music['id'])}.png")])))
+    asyncio.create_task(bot.send(event, Message([MessageSegment.text("▿ 答案\n都没有猜到吗......那现在揭晓答案！\n♪ " + f"{guess.music['id']} > {guess.music['title']}\n"), MessageSegment.image(f"https://www.diving-fish.com/covers/{get_cover_len4_id(guess.music['id'])}.png")])))
     del guess_dict[state["k"]]
 
 
@@ -915,7 +915,7 @@ async def _(bot: Bot, event: Event, state: T_State):
         await guess_music_solve.finish(Message([
             MessageSegment.reply(event.message_id),
             MessageSegment.text("▾ 答案\n您猜对了！答案就是：\n" + f"♪ {guess.music['id']} > {guess.music['title']}\n"),
-            MessageSegment.image(f"https://www.diving-fish.com/covers/{get_cover_len4_id(music['id'])}.png")
+            MessageSegment.image(f"https://www.diving-fish.com/covers/{get_cover_len4_id(guess.music['id'])}.png")
         ]))
 
 waiting_set = on_command("设置店铺")
