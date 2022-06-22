@@ -319,7 +319,9 @@ class DrawBest(object):
             i = num // 5
             j = num % 5
             chartInfo = sdBest[num]
-            pngPath = os.path.join(self.cover_dir, f'{chartInfo.idNum}.jpg')
+            pngPath = os.path.join(self.cover_dir, f'{int(chartInfo.idNum)}.jpg')
+            if not os.path.exists(pngPath):
+                pngPath = os.path.join(self.cover_dir, f'{int(chartInfo.idNum)}.png')
             if not os.path.exists(pngPath):
                 pngPath = os.path.join(self.cover_dir, '1000.png')
             temp = Image.open(pngPath).convert('RGB')
