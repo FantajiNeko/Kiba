@@ -27,6 +27,7 @@ from urllib import parse
 import asyncio
 from nonebot.rule import to_me
 from src.libraries.config import Config
+from src.libraries.maimaidx_music import get_cover_len4_id
 
 driver = get_driver()
 

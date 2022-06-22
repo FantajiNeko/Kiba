@@ -9,7 +9,6 @@ from io import BytesIO
 import requests
 import aiohttp
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
-from src.libraries.maimaidx_music import total_list
 from src.libraries.maimaidx_music import get_cover_len4_id, total_list
 from src import static
 
