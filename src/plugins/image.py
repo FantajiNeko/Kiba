@@ -16,6 +16,7 @@ async def _(bot: Bot, event: Event, state: T_State):
     groups = re.match(regex, str(event.get_message())).groups()
     left = groups[0].strip()
     right = groups[1].strip()
+    nickname = event.sender.nickname
     if len(left) > 15 or len(right) > 15:
         await high_eq.send("▿ Kiba Image Creator - 文字过多\n为了图片质量，请不要多于15个字符嗷。")
         return
@@ -65,6 +66,7 @@ gocho = on_command('gocho')
 @gocho.handle()
 async def _(bot: Bot, event: Event, state: T_State):
     argv = str(event.get_message()).strip().split(' ')
+    nickname = event.sender.nickname
     if len(argv) != 2:
         await jlpx.send("▿ Kiba Image Creator - 参数不足\nGocho 需要两个参数！")
         return
